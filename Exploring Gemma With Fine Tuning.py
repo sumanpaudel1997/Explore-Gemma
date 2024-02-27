@@ -21,4 +21,14 @@ model = AutoModelForCausalLM.from_pretrained(model_name,
 
 # COMMAND ----------
 
+# generate some text
+text = "Quote: Why we suffer "
+
+inputs = tokenizer(text, return_tensors="pt")
+
+outputs = model.generate(**inputs, max_new_tokens=100)
+print(tokenizer.decode(outputs[0], skip_special_tokens=True))
+
+# COMMAND ----------
+
 
